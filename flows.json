@@ -1,0 +1,129 @@
+[
+    {
+        "id": "f2cdbff0e8dc76fd",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c2ec89c692ba2f71",
+        "type": "inject",
+        "z": "f2cdbff0e8dc76fd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "81981d58f7d14f69"
+            ]
+        ]
+    },
+    {
+        "id": "81981d58f7d14f69",
+        "type": "debug",
+        "z": "f2cdbff0e8dc76fd",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "aa79e518924f43b8",
+        "type": "http in",
+        "z": "f2cdbff0e8dc76fd",
+        "name": "",
+        "url": "/status",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 60,
+        "wires": [
+            [
+                "9a82e00c0cad5ccc",
+                "7b415c82f15e924c"
+            ]
+        ]
+    },
+    {
+        "id": "9a82e00c0cad5ccc",
+        "type": "change",
+        "z": "f2cdbff0e8dc76fd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"status\":\"ok\",\"message\":\"health endpoint\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 60,
+        "wires": [
+            [
+                "77a70795471228f6"
+            ]
+        ]
+    },
+    {
+        "id": "77a70795471228f6",
+        "type": "http response",
+        "z": "f2cdbff0e8dc76fd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7b415c82f15e924c",
+        "type": "debug",
+        "z": "f2cdbff0e8dc76fd",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 100,
+        "wires": []
+    }
+]
+
